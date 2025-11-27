@@ -1,4 +1,5 @@
 namespace db;
+
 entity Store {
     key StoreID:String(36);
         StoreName:String(20);
@@ -32,9 +33,10 @@ entity Employee {
 
 entity Customer {
     key CusId:String(36);
-        CustomerName:String(200);
+CustomerName:String(200);
         Email:String(200);
         Phone:String(30);
+        OrdersTotal  : Decimal(12,2);
         CustomerToOrders:Composition of many Orders on CustomerToOrders.OrdersToCustomer=$self;
 }
 

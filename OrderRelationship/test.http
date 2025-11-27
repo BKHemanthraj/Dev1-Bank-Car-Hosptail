@@ -1,0 +1,9 @@
+# GET http://localhost:4004/odata/v4/ecomerce/Orders?$expand=Employee
+POST http://localhost:4004/odata/v4/ecomerce/Wish
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "hemanth"
+}
+

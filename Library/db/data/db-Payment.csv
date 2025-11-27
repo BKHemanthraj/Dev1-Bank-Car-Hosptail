@@ -1,0 +1,3 @@
+PaymentID,OrderID,PaidAmount,Method
+PAY-01,O-700,999.99,CreditCard
+PAY-02,O-701,799.90,Cash

@@ -1,0 +1,259 @@
+{
+  "_version": "1.76.0",
+  "sap.app": {
+    "id": "project2",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.19.5",
+      "toolsId": "9c424ec4-5f53-4a9b-8dd6-27d752bf9238"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/ecomerce/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.142.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "project2.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "CustomerList",
+          "target": "CustomerList"
+        },
+        {
+          "pattern": "Customer({key}):?query:",
+          "name": "CustomerObjectPage",
+          "target": "CustomerObjectPage"
+        },
+        {
+          "pattern": "Customer({key})/CustomerToOrders({key2}):?query:",
+          "name": "OrdersObjectPage",
+          "target": "OrdersObjectPage"
+        }
+      ],
+      "targets": {
+        "CustomerList": {
+          "type": "Component",
+          "id": "CustomerList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Customer",
+              "navigation": {
+                "Customer": {
+                  "detail": {
+                    "route": "CustomerObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "CustomerObjectPage": {
+          "type": "Component",
+          "id": "CustomerObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Customer",
+              "navigation": {
+                "CustomerToOrders": {
+                  "detail": {
+                    "route": "OrdersObjectPage"
+                  }
+                }
+              },
+              "content": {
+                "header": {
+                  "actions": {
+                    "TotalAction": {
+                      "press": "project2.ext.controller.Action.action",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "Total",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "Button"
+                      }
+                    },
+                    "Button": {
+                      "press": "project2.ext.controller.Handle.handle",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "Sum",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "DeleteAction"
+                      }
+                    },
+                    "TotalOrders": {
+                      "press": "project2.ext.controller.Total.Total",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "Total",
+                      "position": {
+                        "placement": "Before",
+                        "anchor": "DeleteAction"
+                      }
+                    },
+                    "Button1": {
+                      "press": "project2.ext.controller.SameFunction.ButtonA",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "AButton",
+                      "position": {
+                        "placement": "Before",
+                        "anchor": "DeleteAction"
+                      }
+                    },
+                    "Button2": {
+                      "press": "project2.ext.controller.SameFunction.ButtonB",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "BButton",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "Button1"
+                      }
+                    },
+                    "Button5": {
+                      "press": "project2.ext.controller.SameFunction.ButtonC",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "CButton",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "Button2"
+                      }
+                    },
+                    "AA": {
+                      "press": "project2.ext.controller.SameContentDiaply.ContentDiaply",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "AA",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "TotalOrders"
+                      }
+                    },
+                    "BB": {
+                      "press": "project2.ext.controller.SameContentDiaply.ContentDiaply",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "BB",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "AA"
+                      }
+                    },
+                    "CC": {
+                      "press": "project2.ext.controller.SameContentDiaply.ContentDiaply",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "CC",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "BB"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "OrdersObjectPage": {
+          "type": "Component",
+          "id": "OrdersObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "contextPath": "/Customer/CustomerToOrders",
+              "editableHeaderContent": false
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}

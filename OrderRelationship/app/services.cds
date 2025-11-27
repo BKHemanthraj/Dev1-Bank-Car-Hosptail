@@ -1,4 +1,4 @@
 
-using from './project1/annotations';
+using from './Store/annotations';
 
-using from './project2/annotations';
+using from './Customer/annotations';

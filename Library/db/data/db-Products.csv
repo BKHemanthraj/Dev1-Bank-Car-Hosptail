@@ -1,0 +1,4 @@
+PID,StoreID,PName,Price,Stock
+P-100,S-001,Apple iPhone 15,999.99,TRUE
+P-101,S-001,Samsung TV 55,549.00,TRUE
+P-200,S-002,Lenovo Laptop,799.90,TRUE

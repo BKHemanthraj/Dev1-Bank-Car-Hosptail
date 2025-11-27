@@ -1,0 +1,4 @@
+CompanyID,CompanyName,FoundedDate,car,HeadOffice,CompanyEmail,EmployeeCount,Revenue,IsActive
+1,Starlight Cars,2005-08-15,Honda,"123 Main Street, Bangalore",cars@info.com,250,125000000.50,true
+2,AutoNova Motors,2010-03-10,Audi,"456 Park Avenue, Mumbai",contact@autonova.com,180,98000000.75,true
+3,PrimeDrive Inc.,2000-07-22,toyota,"789 Industrial Road, Pune",info@primedrive.com,320,210000000.00,false
