@@ -49,20 +49,19 @@ module.exports = cds.service.impl( function () {
 
 
 
-       this.before('CREATE', 'Patients', req => {
-        debugger;
- 
-        if (!req.data.PatientName) {
-            req.error(400, "Name is required");
-        }
- 
-        })
-        this.on('CREATE', 'Patients' , (req,next) =>{
-            debugger;
-            return next()
-    
-        } )
-
+      //  this.before('CREATE', 'Patients', req => {
+            //   debugger;
+             
+                   //   if (!req.data.PatientName) {
+                         //       req.error(400, "Name is required");
+                               //   }
+                                
+                                      //   })
+                                            //   this.on('CREATE', 'Patients' , (req,next) =>{
+                                                  //       debugger;
+                                                        //       return next()
+                                                            
+                                                                  //   } )
 
 
 //     //     this.after('CREATE', 'Patients' , (req)=>{
