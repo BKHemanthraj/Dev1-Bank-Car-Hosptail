@@ -10,7 +10,7 @@ sap.ui.define([
     "use strict";
 
     return {
-
+        
         // Handler name must match what you configured in FE (Page Editor)
         CustomDetails: function (oContext, aSelectedContexts) {
             var oDialog;

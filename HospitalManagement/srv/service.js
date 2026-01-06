@@ -71,65 +71,66 @@ module.exports = cds.service.impl( function () {
 
 // module.exports = cds.service.impl(async function () {
 
-    const { Patients } = this.entities; // service entity (projection on db.Patients)
+//     const { Patients } = this.entities; // service entity (projection on db.Patients)
 
-    // Generate PEOL + 4 digits
-    function genID() {
-        return "PEOL" + Math.floor(1000 + Math.random() * 9000);
-    }
+//     // Generate PEOL + 4 digits
+//     function genID() {
+//         return "PEOL" + Math.floor(1000 + Math.random() * 9000);
+//     }
 
-    this.on('CreatePatient', async (req) => {
-        debugger;
+//     this.on('CreatePatient', async (req) => {
+//         debugger;
 
-        const {
-            PatientName,
-            PatientAge,
-            PatientPhone
-        } = req.data;
+//         const {
+//             PatientName,
+//             PatientAge,
+//             PatientPhone
+//         } = req.data;
 
-        const id = genID();
+//         const id = genID();
 
-        await INSERT.into(Patients).entries({
-            PatientID    : id,
-            PatientName  : PatientName,
-            PatientAge   : PatientAge,
-            PatientPhone : PatientPhone,
-            PatientCity  : "",
-            Status: "Unverified"
-        });
+//         await INSERT.into(Patients).entries({
+//             PatientID    : id,
+//             PatientName  : PatientName,
+//             PatientAge   : PatientAge,
+//             PatientPhone : PatientPhone,
+//             PatientCity  : "",
+//             Status: "Unverified"
+//         });
 
-        return id;   // String -> frontend gets this
-    });
-  // DRAFT CREATE
-  this.on('CreatePatient_Draft', async (req) => {
-debugger
-      const {
-            PatientName,
-            PatientAge,
-            PatientPhone
-        } = req.data;
-        const id = "peol" + Date.now();
-        const { uuid } = cds.utils;
-        const Draft = uuid();
-        await INSERT.into(Patients.drafts).entries({
-            PatientID    : id,
-            PatientName  : PatientName,
-            PatientAge   : PatientAge,
-            PatientPhone : PatientPhone,
-            Status: "Unverified",
-            DraftAdministrativeData_DraftUUID : Draft
-        });
-         await INSERT.into('DRAFT.DraftAdministrativeData').entries({
-            DraftUUID: Draft,
-            CreationDateTime: new Date().toISOString(),
-            CreatedByUser: req.user.id,
-            LastChangedDateTime: new Date().toISOString(),
-            LastChangedByUser: req.user.id,
-            InProcessByUser: req.user.id,
-            DraftIsCreatedByMe: true,
-            DraftIsProcessedByMe: true
-               });
+//         return id;   // String -> frontend gets this
+//     });
+//   // DRAFT CREATE
+//   this.on('CreatePatient_Draft', async (req) => {
+// debugger
+//       const {
+//             PatientName,
+//             PatientAge,
+//             PatientPhone
+//         } = req.data;
+//         const id = "peol" + Date.now();
+//         const { uuid } = cds.utils;
+//         const Draft = uuid();
+//         await INSERT.into(Patients.drafts).entries({
+//             PatientID    : id,
+//             PatientName  : PatientName,
+//             PatientAge   : PatientAge,
+//             PatientPhone : PatientPhone,
+//             Status: "Unverified",
+//             DraftAdministrativeData_DraftUUID : Draft
+//         });
+//          await INSERT.into('DRAFT.DraftAdministrativeData').entries({
+//             DraftUUID: Draft,
+//             CreationDateTime: new Date().toISOString(),
+//             CreatedByUser: req.user.id,
+//             LastChangedDateTime: new Date().toISOString(),
+//             LastChangedByUser: req.user.id,
+//             InProcessByUser: req.user.id,
+//             DraftIsCreatedByMe: true,
+//             DraftIsProcessedByMe: true
+//                });
               
-  });
+//   });
 
   });
+

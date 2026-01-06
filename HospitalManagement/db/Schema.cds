@@ -12,12 +12,13 @@ entity Visitor{
 
 entity Patients{
     // @Core.Computed:True
-    key PatientID : String @readonly;
+    key PatientID : String ;//@readonly;
     PatientName : String;
     PatientAge : Integer;
     PatientPhone : String @assert.format: '^[0-9]{10}$';
     PatientCity : String;
     Status:String;
+    statusCriticality : Integer;
     patientsTovisits : Composition of many Visitor on patientsTovisits.visitsTopatients = $self;
 }
 

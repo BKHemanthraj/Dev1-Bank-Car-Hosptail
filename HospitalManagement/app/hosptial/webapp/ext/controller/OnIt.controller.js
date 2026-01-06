@@ -14,22 +14,29 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension'], function (ControllerExten
 				// you can access the Fiori elements extensionAPI via this.base.getExtensionAPI
 				var oModel = this.base.getExtensionAPI().getModel();
 				debugger
+				//sap.ui.core.Element.getElementById("hosptial::PatientsList--fe::table::Patients::LineItem::StandardAction::Create").setVisible(false)				
 			},
-			// editFlow: {
-			// 	onBeforeEdit: async function () {
-			// 		debugger;
+			editFlow: {
+				onBeforeEdit: async function () {
+					debugger;
 
-			// 	var Status = 
-			// 	sap.ui.core.Element.getElementById("hosptial::PatientsObjectPage--fe::FormContainer::GeneratedFacet1::FormElement::DataField::Status::Field-display").getText()				
-			// 		if(Status === 'Verified'){
-			// 			sap.ui.core.Element.getElementById("hosptial::PatientsObjectPage--fe::StandardAction::Edit").setEnabled(false); 
-			// 		}
-			// 	}
-			// },
+				// var Status = 
+				// sap.ui.core.Element.getElementById("hosptial::PatientsObjectPage--fe::FormContainer::GeneratedFacet1::FormElement::DataField::Status::Field-display").getText()				
+				// 	if(Status === 'Verified'){
+				// 		sap.ui.core.Element.getElementById("hosptial::PatientsObjectPage--fe::StandardAction::Edit").setEnabled(false); 
+				// 	}
+				}
+			},
 			routing: {
 				onBeforeBinding: function (oContext) {
 					
 					console.log("Before Binding", oContext);
+				},
+				onAfterBinding: async function (oContext){
+				
+				},
+				onBeforeNavigation : function (params) {
+					
 				},
 
 			// 	onAfterBinding: async function (oContext) {
@@ -45,34 +52,35 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension'], function (ControllerExten
 			// 		}
 				
 			// 	},
-			onAfterBinding: async function (oContext) {
-    debugger;
+	// 		onAfterBinding: async function (oContext) 
+	// 		{
+    // debugger;
 
-			const data = await oContext.requestObject();
-			// 1. Get the inner table of patientsTovisits
-			const oTable = sap.ui.getCore().byId(
-				"hosptial::PatientsObjectPage--fe::table::patientsTovisits::LineItem::Vistor-innerTable"
-			);
-			console.log(oTable)
+	// 		const data = await oContext.requestObject();
+	// 		// 1. Get the inner table of patientsTovisits
+	// 		const oTable = sap.ui.getCore().byId(
+	// 			"hosptial::PatientsObjectPage--fe::table::patientsTovisits::LineItem::Vistor-innerTable"
+	// 		);
+	// 		console.log(oTable)
 
-			if (!oTable) {
-				console.log("Child table not found yet!");
-				return;
-			}
+	// 		if (!oTable) {
+	// 			console.log("Child table not found yet!");
+	// 			return;
+	// 		}
 
-		const oBinding = oTable.getBinding("items");
+	// 	const oBinding = oTable.getBinding("items");
 
-		oBinding.attachEventOnce("dataReceived", async () => {
+	// 	oBinding.attachEventOnce("dataReceived", async () => {
               
-                        const contexts = oBinding.getContexts(); // NOW it has values
+    //                     const contexts = oBinding.getContexts(); // NOW it has values
  
-                        const childData = await Promise.all(
-                            contexts.map(c => c.requestObject())
-                        );
-                        console.log("Child table rows:", childData);
-		}
-		)
-	},
+    //                     const childData = await Promise.all(
+    //                         contexts.map(c => c.requestObject())
+    //                     );
+    //                     console.log("Child table rows:", childData);
+	// 	}
+	// 	)
+	// },
 
 						onBeforeRendering: function () {
 							debugger

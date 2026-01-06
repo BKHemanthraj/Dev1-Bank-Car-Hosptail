@@ -141,5 +141,9 @@ sap.ui.define([
                 }
             }
         }
+        onAfterBinding: async function (oContext) {
+            const status = sap.ui.core.Element.getElementById("hosptial::PatientsList--fe::table::Patients::LineItem-toolbar").getText()
+            
+        }
     };
 });

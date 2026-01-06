@@ -86,17 +86,26 @@
         {
           "pattern": ":?query:",
           "name": "PatientsList",
-          "target": "PatientsList"
+          "target": [
+            "PatientsList"
+          ]
         },
         {
           "pattern": "Patients({key}):?query:",
           "name": "PatientsObjectPage",
-          "target": "PatientsObjectPage"
+          "target": [
+            "PatientsList",
+            "PatientsObjectPage"
+          ]
         },
         {
           "pattern": "Patients({key})/patientsTovisits({key2}):?query:",
           "name": "VisitsObjectPage",
-          "target": "VisitsObjectPage"
+          "target": [
+            "PatientsList",
+            "PatientsObjectPage",
+            "VisitsObjectPage"
+          ]
         }
       ],
       "targets": {
@@ -107,7 +116,6 @@
           "options": {
             "settings": {
               "contextPath": "/Patients",
-              "variantManagement": "Page",
               "navigation": {
                 "Patients": {
                   "detail": {
@@ -118,20 +126,44 @@
               "controlConfiguration": {
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
-                    "type": "ResponsiveTable"
+                    "type": "ResponsiveTable",
+                    "condensedTableLayout": true,
+                    "selectAll": false,
+                    "selectionLimit": 3,
+                    "disableCopyToClipboard": false,
+                    "enableExport": true,
+                    "enableMassEdit": false,
+                    "selectionMode": "None",
+                    "creationMode": {
+                      "name": "CreationDialog"
+                    }
                   },
                   "actions": {
                     "ButtonAction": {
                       "press": "hosptial.ext.controller.HandleCustom.CustomDetails",
                       "visible": true,
                       "enabled": true,
-                      "requiresSelection": false,
+                      "requiresSelection": true,
                       "text": "Custom Button"
+                    },
+                    "Ajax": {
+                      "press": "hosptial.ext.controller.AjaxCustom.AjaxCustomButton",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Ajax Button",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "ButtonAction"
+                      }
                     }
                   }
                 }
               },
-              "defaultTemplateAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView"
+              "hideFilterBar": false,
+              "initialLoad": "Enabled",
+              "variantManagement": "Page",
+              "defaultTemplateAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#table1"
             }
           }
         },
@@ -192,10 +224,19 @@
                         "anchor": "Fragments1"
                       },
                       "title": "Dailog"
+                    },
+                    "UserForm": {
+                      "template": "hosptial.ext.fragment.UserForm",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "DailogBox"
+                      },
+                      "title": "DeatilsForm"
                     }
                   }
                 }
-              }
+              },
+              "sectionLayout": "Page"
             }
           }
         },
@@ -217,6 +258,9 @@
         "sap.ui.controllerExtensions": {
           "sap.fe.templates.ObjectPage.ObjectPageController#hosptial::PatientsObjectPage": {
             "controllerName": "hosptial.ext.controller.OnIt"
+          },
+          "sap.fe.templates.ListReport.ListReportController": {
+            "controllerName": "hosptial.ext.controller.OnIt"
           }
         }
       }
@@ -225,5 +269,11 @@
   "sap.fiori": {
     "registrationIds": [],
     "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {},
+    "macros": {
+      "table": {}
+    }
   }
 }

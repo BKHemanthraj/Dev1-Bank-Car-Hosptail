@@ -79,6 +79,8 @@ annotate service.Patients with @(
             $Type : 'UI.DataField',
             Value : Status,
             Label : 'Status',
+            Criticality : statusCriticality,
+            CriticalityRepresentation : #WithIcon,
         },
     ],
     UI.SelectionPresentationVariant #tableView : {
@@ -95,6 +97,51 @@ annotate service.Patients with @(
             ],
         },
         Text : 'Table View',
+    },
+    UI.SelectionFields : [
+        PatientAge,
+    ],
+    UI.SelectionPresentationVariant #table : {
+        $Type : 'UI.SelectionPresentationVariantType',
+        PresentationVariant : {
+            $Type : 'UI.PresentationVariantType',
+            Visualizations : [
+                '@UI.LineItem',
+            ],
+            SortOrder : [
+                {
+                    $Type : 'Common.SortOrderType',
+                    Property : PatientAge,
+                    Descending : false,
+                },
+            ],
+            GroupBy : [
+                PatientAge,
+            ],
+        },
+        SelectionVariant : {
+            $Type : 'UI.SelectionVariantType',
+            SelectOptions : [
+            ],
+        },
+    },
+    UI.SelectionPresentationVariant #table1 : {
+        $Type : 'UI.SelectionPresentationVariantType',
+        PresentationVariant : {
+            $Type : 'UI.PresentationVariantType',
+            Visualizations : [
+                '@UI.LineItem',
+            ],
+        },
+        SelectionVariant : {
+            $Type : 'UI.SelectionVariantType',
+            SelectOptions : [
+            ],
+        },
+    },
+    UI.HeaderInfo : {
+        TypeName : '',
+        TypeNamePlural : '',
     },
 );
 
@@ -127,4 +174,16 @@ annotate service.Visits with @(
         },
     ]
 );
+
+annotate service.Patients with {
+    PatientAge @(
+        Common.Label : 'PatientAge',
+        )
+};
+
+annotate service.Patients with {
+    PatientName @(
+        Common.SemanticObject : 'Sem',
+        )
+};
 

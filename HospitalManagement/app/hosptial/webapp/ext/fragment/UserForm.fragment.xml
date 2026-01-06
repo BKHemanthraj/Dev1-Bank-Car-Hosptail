@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+
+    <VBox core:require="{ handler: 'hosptial/ext/fragment/UserForm' }" class="sapUiSmallMargin">
+        <Label text="Name" />
+        <Input id="nameInput" placeholder="Enter name"  />
+
+        <Label text="Age" />
+        <Input id="ageInput" placeholder="Enter age" type="Number"  />
+
+        <Label text="Phone Number" />
+        <Input id="phoneInput" placeholder="Enter phone number"   />
+
+        <Label text="ID" />
+        <Input id="userIdInput" placeholder="Enter ID"/>
+
+        <Button id="saveBtn" text="Save" press="handler.onPress" />
+
+    </VBox>
+</core:FragmentDefinition>
